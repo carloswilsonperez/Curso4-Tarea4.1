@@ -75,7 +75,9 @@
             android:resource="@color/colorAccent" />
 
         <receiver android:name=".restApi.SeguirUsuario">
-
+            <intent-filter>
+                <action android:name="SEGUIR_USUARIO"/>
+            </intent-filter>
         </receiver>
 
     </application>

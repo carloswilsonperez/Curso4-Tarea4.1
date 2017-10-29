@@ -47,9 +47,9 @@ public class NotificationService extends FirebaseMessagingService {
         PendingIntent pendingIntentVerMiPerfil = PendingIntent.getActivity(this, 0, intentVerMiPerfil, PendingIntent.FLAG_UPDATE_CURRENT);
 
         //***** Notificacion con la acción de "Follow/Ufollow", seguir o no seguir al usuario en instagram
-        Intent intentSeguirUsuario = new Intent(this, AcercadeActivity.class);
-        
-        PendingIntent pendingIntentSeguirUsuario = PendingIntent.getActivity(this, 0, intentSeguirUsuario, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent intentSeguirUsuario = new Intent();
+        intentSeguirUsuario.setAction("SEGUIR_USUARIO");
+        PendingIntent pendingIntentSeguirUsuario = PendingIntent.getBroadcast(this, 0, intentSeguirUsuario, PendingIntent.FLAG_UPDATE_CURRENT);
 
 
         //***** Notificacion con la acción de "Ver usuario", nos lleva al activity en la que se visualizan las
@@ -68,8 +68,8 @@ public class NotificationService extends FirebaseMessagingService {
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .addAction(R.drawable.ic_full_notificacion_perro, getString(R.string.texto_accion_ver_mi_perfil), pendingIntentVerMiPerfil)
-                .addAction(R.drawable.ic_full_notificacion_perro, getString(R.string.texto_accion_ver_mi_perfil), pendingIntentSeguirUsuario)
-                .addAction(R.drawable.ic_full_notificacion_perro, getString(R.string.texto_accion_ver_mi_perfil), pendingIntentVerUsuario)
+                .addAction(R.drawable.ic_full_notificacion_perro, getString(R.string.texto_accion_follow_unfollow), pendingIntentSeguirUsuario)
+                .addAction(R.drawable.ic_full_notificacion_perro, getString(R.string.texto_accion_ver_usuario), pendingIntentVerUsuario)
                 ;
 
 
