@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1018436922419",
+    "firebase_url": "https://curso4semana4tarea1.firebaseio.com",
+    "project_id": "curso4semana4tarea1",
+    "storage_bucket": "curso4semana4tarea1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1018436922419:android:e442e2bd5f3ebad6",
+        "android_client_info": {
+          "package_name": "com.example.administrador.curso4_tarea4_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1018436922419-s0brh9r47nqbgsbaombe5intjampu6ga.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.administrador.curso4_tarea4_1",
+            "certificate_hash": "7e916ed873f6e20e7fe2674829899aeba496f3f7"
+          }
+        },
+        {
+          "client_id": "1018436922419-sp40mb1hhe46g0vdrggt03vbbuhu4slr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaqJPMpspri4uQpXckH0kOOfcjk4n9LDw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1018436922419-sp40mb1hhe46g0vdrggt03vbbuhu4slr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

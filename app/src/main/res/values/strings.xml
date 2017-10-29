@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Curso 4 Tarea 4</string>
+    <string name="menu_contacto">Contacto</string>
+    <string name="menu_acerca_de">Acerca de</string>
+    <string name="menu_configurar_cuenta">Configurar Cuenta</string>
+    <string name="menu_recibir_notificaciones">Recibir Notificaciones</string>
+    <string name="descipcion_perro">Perro buldog</string>
+    <string name="nombre">Nombre de mascota</string>
+    <string name="pnombre">nombre</string>
+    <string name="num_likes">4</string>
+    <string name="pnum_likes">numLikes</string>
+    <string name="action_settings">Settings</string>
+    <string name="titulo">Petagram</string>
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_mensaje">Escribe tu mensaje aquí</string>
+    <string name="titulo_formulario">Formulario de contacto</string>
+    <string name="title_activity_acercade">Acerca de mi</string>
+    <string name="btn_enviar">Enviar comentario</string>
+    <string name="tv_acercade_estudios">Estudios cursados: Escuela Primaria de Springfield, Preparatoria de Springfield </string>
+    <string name="tv_acercade_nombre">Nombre completo: Homer Jay Simpson</string>
+    <string name="tv_acercade_edad">Edad: 40 años</string>
+    <string name="tv_acercade_experiencia_laboral">Experiencia laboral: Actualmente me desempeño como encargado de seguridad nuclear, pero he trabajado como: boxeador, mascota, astronauta, asegurador de bebés, imitador de Krusty, conductor de camión de transporte, hippy, conductor de máquina quitanieves, crítico gastronómico, artista conceptual, vendedor de grasa, feriante, alcalde, etc.</string>
+    <string name="aviso_enviando_mail">Tu comentario está siendo procesado.</string>
+    <string name="aviso_mail_enviado">Correo enviado con éxito a:  </string>
+    <string name="aviso_faltan_datos">Faltan datos </string>
+    <string name="mi_mascota">Yaman</string>
+    <string name="et_usuario_sandbox">Escribe un usuario</string>
+    <string name="btn_guardar_cuenta">Guardar Cuenta</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="titulo_acercade">Acerca de mi</string>
+    <string name="texto_accion_ver_mi_perfil">Ver mi perfil</string>
+
+
+
+</resources>
