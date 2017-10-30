@@ -3,12 +3,14 @@ package com.example.administrador.curso4_tarea4_1.servicios;
 
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.util.Log;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.NotificationCompat.WearableExtender;
+import android.view.Gravity;
 
 import com.example.administrador.curso4_tarea4_1.Activity.AcercadeActivity;
 import com.example.administrador.curso4_tarea4_1.Activity.MainActivity;
@@ -57,6 +59,31 @@ public class NotificationService extends FirebaseMessagingService {
         Intent intentVerUsuario = new Intent(this, AcercadeActivity.class);
         PendingIntent pendingIntentVerUsuario = PendingIntent.getActivity(this, 0, intentVerUsuario, PendingIntent.FLAG_UPDATE_CURRENT);
 
+        // Objetos Accion para ser utilizada desde el objeto WearableExtender
+        // Abrirá la pantalla de home del usuario establecido
+        NotificationCompat.Action actionVerMiPerfil =
+                new NotificationCompat.Action.Builder(R.drawable.ic_full_notificacion_perro,
+                        getString(R.string.texto_accion_ver_mi_perfil), pendingIntentVerMiPerfil)
+                .build();
+        //Seguir/dejarDeSeguir al usuario que raiteo tu foto de instagram
+        NotificationCompat.Action actionSeguirUsuario =
+                new NotificationCompat.Action.Builder(R.drawable.ic_full_notificacion_perro,
+                        getString(R.string.texto_accion_follow_unfollow), pendingIntentSeguirUsuario)
+                        .build();
+
+        NotificationCompat.Action actionVerUsuario =
+                new NotificationCompat.Action.Builder(R.drawable.ic_full_notificacion_perro,
+                        getString(R.string.texto_accion_ver_usuario), pendingIntentVerUsuario)
+                        .build();
+
+        // Objeto WearableExtender para usar y personalizar la notivicacion que solo será visible en el Wearable
+        NotificationCompat.WearableExtender wearableExtender =
+                new NotificationCompat.WearableExtender()
+                .setHintHideIcon(true)
+                .setBackground(BitmapFactory.decodeResource(getResources(),
+                        R.drawable.fondo_perro))
+                .setGravity(Gravity.CENTER_VERTICAL)
+                ;
 
         // ******* Crea la notificacion *********
         NotificationCompat.Builder notificacion = new NotificationCompat.Builder(this)
@@ -67,9 +94,12 @@ public class NotificationService extends FirebaseMessagingService {
                 .setColor(color)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
-                .addAction(R.drawable.ic_full_notificacion_perro, getString(R.string.texto_accion_ver_mi_perfil), pendingIntentVerMiPerfil)
-                .addAction(R.drawable.ic_full_notificacion_perro, getString(R.string.texto_accion_follow_unfollow), pendingIntentSeguirUsuario)
-                .addAction(R.drawable.ic_full_notificacion_perro, getString(R.string.texto_accion_ver_usuario), pendingIntentVerUsuario)
+                .extend(wearableExtender.addAction(actionVerMiPerfil))
+                .extend(wearableExtender.addAction(actionSeguirUsuario))
+                .extend(wearableExtender.addAction(actionVerUsuario))
+     //           .addAction(R.drawable.ic_full_notificacion_perro, getString(R.string.texto_accion_ver_mi_perfil), pendingIntentVerMiPerfil)
+     //           .addAction(R.drawable.ic_full_notificacion_perro, getString(R.string.texto_accion_follow_unfollow), pendingIntentSeguirUsuario)
+     //           .addAction(R.drawable.ic_full_notificacion_perro, getString(R.string.texto_accion_ver_usuario), pendingIntentVerUsuario)
                 ;
 
 
