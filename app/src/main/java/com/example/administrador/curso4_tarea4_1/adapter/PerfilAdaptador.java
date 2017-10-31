@@ -36,6 +36,7 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
     ArrayList<Mascota> mascotas;
     Activity activity;
     DatosPreferencias datosPreferencias;
+    private static final String TAG = "PerfilAdaptador";
 
 
     //******** Constructor *******
@@ -121,17 +122,17 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
                 UsuarioResponse usuarioResponse = response.body(); //obtiene la respuesta
                 //aqui podemos guardar los datos localmente
                 if (usuarioResponse!=null){
-                    Log.d("ID_FIREBASE", "Este es el ID ->"+ usuarioResponse.getId());
-                    Log.d("TOKEN_FIREBASE", "Este es el TOKEN ->"+ usuarioResponse.getToken());
+                    Log.d(TAG, "registrarDispositivoYUsuario: ID_FIREBASE ->"+ usuarioResponse.getId());
+                    Log.d(TAG, "registrarDispositivoYUsuario: TOKEN FIREBASE ->"+ usuarioResponse.getToken());
                 }else {
-                    Log.d("ID_FIREBASE", "Error en el método \"registrarDispositivoYUsuario\" de la clase PerfilAdaptador " +
+                    Log.d(TAG, "Error en el método \"registrarDispositivoYUsuario\" de la clase PerfilAdaptador " +
                             ", No hubo respuesta del servidor");
                 }
 
             }
             @Override
             public void onFailure(Call<UsuarioResponse> call, Throwable t) {
-                Log.d("ERROR_CONEXION_FIREBASE", "Huvo un error de conexión!");
+                Log.d(TAG, "Huvo un error de conexión con FIREBASE!");
             }
         });
     }
@@ -148,11 +149,11 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
             public void onResponse(Call<LikeResponseInstagram> call, Response<LikeResponseInstagram> response) {
                 Toast.makeText(activity, "Has enviado un like a la foto", Toast.LENGTH_LONG).show();
                // String idDispositivo = FirebaseInstanceId.getInstance().getToken(); //captura el token del dispositivo
-                Log.d("LikeOk", "El like ha sido enviado a instagram");
+                Log.d(TAG, "LIKE OK. El like ha sido enviado a instagram");
             }
             @Override
             public void onFailure(Call<LikeResponseInstagram> call, Throwable t) {
-                Log.d("LikeError", "Algo salió mal al dar like en la foto");
+                Log.d(TAG, "LIKE ERROR. Algo salió mal al dar like en la foto");
             }
         });
     }
@@ -170,12 +171,12 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
                 if (likeResponseHeroku!=null){
                     String regitrolike = likeResponseHeroku.getId_dispositivo();
                 }
-                Log.d("RegistraLikeOk", "El like se ha guardado en Firebase utilizando Heroku");
+                Log.d(TAG, "El like se ha guardado en Firebase utilizando HEROKU");
             }
 
             @Override
             public void onFailure(Call<LikeResponseHeroku> call, Throwable t) {
-                Log.d("RegistraLikeError", "Hubo un error al guardar el like en Firebase utilizando Heroku");
+                Log.d(TAG, "Hubo un error al guardar el like en FIREBASE utilizando HEROKU");
             }
         });
     }
@@ -191,13 +192,13 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
                 NotificaLikeResponse notificaLikeResponse = response.body();
                 if (notificaLikeResponse!=null){
                     String id_dispositivo = notificaLikeResponse.getId_dispositivo();
-                    Log.d("NotificaLikeOk", "Se han envíado las notificaciones a: " + id_dispositivo);
+                    Log.d(TAG, "NOTIFICACIÓN LIKE OK, Se han envíado las notificaciones a: " + id_dispositivo);
                 }
             }
 
             @Override
             public void onFailure(Call<NotificaLikeResponse> call, Throwable t) {
-                Log.d("NotificaLikeError", "Hubo un error al intentar enviar las notificaciones");
+                Log.d(TAG, "NOTIFICACIÓN ERROR, Hubo un error al intentar enviar las notificaciones");
             }
         });
 

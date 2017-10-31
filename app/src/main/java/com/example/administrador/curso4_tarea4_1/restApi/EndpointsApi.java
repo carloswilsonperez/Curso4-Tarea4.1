@@ -68,7 +68,7 @@ public interface EndpointsApi {
         https://api.instagram.com/v1/users/{user-id}/relationship   */
     @FormUrlEncoded
     @POST(ConstantesRestApi.KEY_FOLLOW_UNFOLLOW)
-    Call<FollowResponseInstagram> seguirUsuarioInstagram(@Path("user-id") String idUsuarioInstagram,
+    Call<FollowResponseInstagram> seguirUsuarioInstagram(@Path("users-id") String idUsuarioInstagram,
                                                          @Field("access_token") String tokenInstagram,
-                                                         @Field("acction") String accion );
+                                                         @Field("action") String accion );
 }

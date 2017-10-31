@@ -11,6 +11,9 @@ public class Follow {
     private String estadoEntrada;
     private String usuarioPrivado;
 
+    public Follow() {
+
+    }
 
     public Follow(String estadoSalida, String usuarioPrivado) {
         this.estadoSalida = estadoSalida;

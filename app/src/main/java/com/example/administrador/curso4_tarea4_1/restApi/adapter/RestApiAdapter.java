@@ -2,8 +2,10 @@ package com.example.administrador.curso4_tarea4_1.restApi.adapter;
 
 import com.example.administrador.curso4_tarea4_1.restApi.ConstantesRestApi;
 import com.example.administrador.curso4_tarea4_1.restApi.EndpointsApi;
+import com.example.administrador.curso4_tarea4_1.restApi.deserializador.FollowDeserializador;
 import com.example.administrador.curso4_tarea4_1.restApi.deserializador.MascotaDeserializador;
 import com.example.administrador.curso4_tarea4_1.restApi.deserializador.PerfilDeserializador;
+import com.example.administrador.curso4_tarea4_1.restApi.model.FollowResponseInstagram;
 import com.example.administrador.curso4_tarea4_1.restApi.model.MascotaResponse;
 import com.example.administrador.curso4_tarea4_1.restApi.model.PerfilResponse;
 import com.google.gson.Gson;
@@ -57,6 +59,13 @@ public class RestApiAdapter {
                 .addConverterFactory(GsonConverterFactory.create()) // deserializacion automatica de los datos espesificos que le indica el Gson
                 .build();
         return retrofit.create(EndpointsApi.class);
+    }
+
+    public Gson construyeGesonDeserializadorFollow(){
+        //objeto que sirve para que se desearializen los datos del perfil de usuario
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(FollowResponseInstagram.class, new FollowDeserializador()); // define la asociación
+        return gsonBuilder.create(); // retorna el Gson con la asociacion creada
     }
 
 

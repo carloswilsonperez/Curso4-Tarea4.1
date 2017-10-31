@@ -12,7 +12,7 @@ public final class ConstantesRestApi {
     public static final String KEY_ACCESS_TOKEN = "?access_token=";
     public static final String KEY_GET_RECENT_MEDIA_USER = "users/self/media/recent/"; // Obtener los medios recientes
     public static final String KEY_SET_LIKE_MEDIA = "media/{media-id}/likes";          // Dar me gusta a una foto
-    public static final String KEY_FOLLOW_UNFOLLOW = "users/{user-id}/relationship"; //Seguir usuario de instagram
+    public static final String KEY_FOLLOW_UNFOLLOW = "users/{users-id}/relationship"; //Seguir usuario de instagram
 
 
     // ************  SharedPrecerences  **************

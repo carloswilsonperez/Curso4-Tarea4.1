@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             if (numTab == 1) {
                 // Abres la página que quieras
                 viewPager.setCurrentItem(1); // 1 para ir a la segunda página ya que empiezan en 0
-                Log.d("ABRIR-TAB", "estas dentro del if para abrir la pestaña 1");
+                Log.d("ABRIR-TAB", "ABRIR-TAB: estas dentro del if para abrir la pestaña 1");
             }else {
                 Log.d("ABRIR-TAB", "estas FUERA del if ");
             }

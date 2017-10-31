@@ -13,6 +13,10 @@ public class FollowResponseInstagram {
 
     ArrayList<Follow> follows;
 
+    public FollowResponseInstagram() {
+
+    }
+
     public FollowResponseInstagram(ArrayList<Follow> follows) {
         this.follows = follows;
     }

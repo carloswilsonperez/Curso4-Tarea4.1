@@ -18,4 +18,7 @@ public final class JsonKeys {
     public static final String MEDIA_URL = "url";
     public static final String MEDIA_LIKES = "likes";
     public static final String MEDIA_LIKES_COUNT = "count";
+    public static final String FOLLOW_OUTGOING_STATUS = "outgoing_status";
+    public static final String FOLLOW_TARGET_USER_IS_PRIVATE = "target_user_is_private";
+    public static final String FOLLOW_INCOMING_STATUS = "incoming_status";
 }
