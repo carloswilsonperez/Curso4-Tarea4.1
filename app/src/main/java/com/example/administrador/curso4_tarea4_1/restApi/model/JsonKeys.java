@@ -21,4 +21,5 @@ public final class JsonKeys {
     public static final String FOLLOW_OUTGOING_STATUS = "outgoing_status";
     public static final String FOLLOW_TARGET_USER_IS_PRIVATE = "target_user_is_private";
     public static final String FOLLOW_INCOMING_STATUS = "incoming_status";
+    public static final String DATA_RESPONSE_OBJECT = "data";
 }

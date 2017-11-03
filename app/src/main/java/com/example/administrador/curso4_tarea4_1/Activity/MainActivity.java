@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent3);
                 break;
             case R.id.mRecibirNotificaciones:
-                String token = FirebaseInstanceId.getInstance().getToken(); //captura el token
+                String token = FirebaseInstanceId.getInstance().getToken(); //captura el tokenInstagram
                 Log.d("FIREBASE-TOKEN", token);
                 enviarTokenRegistro(token); //lo envia para su registro
                 break;
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
         // Obtengo el id del usuario de instagram que está guardado en mi dispositivo
         datosPreferencias = new DatosPreferencias(this);
         idUsuario = datosPreferencias.getIdUsuarioApi();
-        //por último se utiliza el metodo que registra el token
+        //por último se utiliza el metodo que registra el tokenInstagram
         Call<UsuarioResponse> usuarioResponseCall = endpoints.registrarUsuario(token, idUsuario);
         // verificamos si salió bien
         usuarioResponseCall.enqueue(new Callback<UsuarioResponse>() {
