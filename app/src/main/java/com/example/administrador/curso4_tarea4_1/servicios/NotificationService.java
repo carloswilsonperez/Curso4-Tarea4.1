@@ -87,7 +87,7 @@ public class NotificationService extends FirebaseMessagingService {
 
         // ******* Crea la notificacion *********
         NotificationCompat.Builder notificacion = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.ic_shortcut_perro08)
                 .setContentTitle("Notificación")
                 .setContentText(remoteMessage.getNotification().getBody())
                 .setSound(sonido)

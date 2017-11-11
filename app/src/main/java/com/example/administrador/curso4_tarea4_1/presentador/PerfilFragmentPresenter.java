@@ -25,7 +25,7 @@ import retrofit2.Response;
 
 public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
 
-    private static final String TAG = "Fallo de conexion";
+    private static final String TAG = "PerfilFragmentPresenter";
     private Context context;
     private IPerfilFragmentView iPerfilFragmentView;
     private ArrayList<Mascota> mascotas;

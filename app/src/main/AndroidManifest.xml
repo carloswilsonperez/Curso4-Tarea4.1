@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.administrador.curso4_tarea4_1.Activity.MainActivity"
+            android:name=".Activity.MainActivity"
             android:label="Curso 4 Tarea 4"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -22,8 +22,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.administrador.curso4_tarea4_1.Activity.Activity2"
-            android:parentActivityName="com.example.administrador.curso4_tarea4_1.Activity.MainActivity">
+            android:name=".Activity.Activity2"
+            android:parentActivityName=".Activity.MainActivity">
 
             <!-- Soporte para versiones 4.0 o menores -->
             <meta-data
@@ -31,13 +31,13 @@
                 android:value="com.example.administrador.curso4_tarea4_1.Activity.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.administrador.curso4_tarea4_1.Activity.FormularioActivity"
+            android:name=".Activity.FormularioActivity"
             android:windowSoftInputMode="stateHidden"> <!-- Oculta el teclado al arbrir la actividad si perder el foco -->
         </activity>
         <activity
-            android:name="com.example.administrador.curso4_tarea4_1.Activity.AcercadeActivity"
+            android:name=".Activity.AcercadeActivity"
             android:label="@string/title_activity_acercade"
-            android:parentActivityName="com.example.administrador.curso4_tarea4_1.Activity.MainActivity"
+            android:parentActivityName=".Activity.MainActivity"
             android:theme="@style/AppTheme">
 
             <!-- Soporte para versiones 4.0 o menores -->
@@ -46,8 +46,8 @@
                 android:value="com.example.administrador.curso4_tarea4_1.Activity.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.administrador.curso4_tarea4_1.Activity.ConfiguraCuentaActivity"
-            android:parentActivityName="com.example.administrador.curso4_tarea4_1.Activity.MainActivity"
+            android:name=".Activity.ConfiguraCuentaActivity"
+            android:parentActivityName=".Activity.MainActivity"
             android:windowSoftInputMode="stateHidden"> <!-- Oculta el teclado al arbrir la actividad si perder el foco -->
             <!-- Soporte para versiones 4.0 o menores -->
             <meta-data
@@ -55,12 +55,12 @@
                 android:value="com.example.administrador.curso4_tarea4_1.Activity.MainActivity" />
         </activity>
 
-        <service android:name="com.example.administrador.curso4_tarea4_1.servicios.NotificationIDTokenService">
+        <service android:name=".servicios.NotificationIDTokenService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service android:name="com.example.administrador.curso4_tarea4_1.servicios.NotificationService">
+        <service android:name=".servicios.NotificationService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -76,10 +76,11 @@
 
         <receiver android:name=".restApi.SeguirUsuario">
             <intent-filter>
-                <action android:name="SEGUIR_USUARIO"/>
+                <action android:name="SEGUIR_USUARIO" />
             </intent-filter>
         </receiver>
 
+        <activity android:name=".Activity.VerUsuarioActivity"></activity>
     </application>
 
 </manifest>

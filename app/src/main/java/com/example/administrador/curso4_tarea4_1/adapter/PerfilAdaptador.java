@@ -169,7 +169,7 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
             public void onResponse(Call<LikeResponseHeroku> call, Response<LikeResponseHeroku> response) {
                 LikeResponseHeroku likeResponseHeroku = response.body();
                 if (likeResponseHeroku!=null){
-                    String regitrolike = likeResponseHeroku.getId_dispositivo();
+                    String registroLike = likeResponseHeroku.getId_dispositivo();
                 }
                 Log.d(TAG, "El like se ha guardado en Firebase utilizando HEROKU");
             }

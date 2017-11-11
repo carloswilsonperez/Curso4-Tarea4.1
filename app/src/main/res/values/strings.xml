@@ -8,6 +8,7 @@
     <string name="nombre">Nombre de mascota</string>
     <string name="pnombre">nombre</string>
     <string name="num_likes">4</string>
+    <string name="texto_likes">Me gusta </string>
     <string name="pnum_likes">numLikes</string>
     <string name="action_settings">Settings</string>
     <string name="titulo">Petagram</string>
@@ -32,7 +33,6 @@
     <string name="texto_accion_ver_mi_perfil">Ver mi perfil</string>
     <string name="texto_accion_follow_unfollow">Seguir/No Seguir</string>
     <string name="texto_accion_ver_usuario">Ver usuario</string>
-
 
 
 </resources>
