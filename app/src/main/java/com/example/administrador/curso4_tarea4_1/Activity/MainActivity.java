@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Abre el activity2 con las 5 mascotas favoritas
     public void irFavoritas(View view){
-        Intent intent = new Intent(this, Activity2.class);
+        Intent intent = new Intent(this, MasVotadosActivity.class);
         startActivity(intent);
     }
 

@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.Activity2"
+            android:name=".Activity.MasVotadosActivity"
             android:parentActivityName=".Activity.MainActivity">
 
             <!-- Soporte para versiones 4.0 o menores -->

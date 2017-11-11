@@ -1,7 +1,7 @@
 package com.example.administrador.curso4_tarea4_1.presentador;
 
 import android.content.Context;
-import com.example.administrador.curso4_tarea4_1.Activity.IActivity2View;
+import com.example.administrador.curso4_tarea4_1.Activity.IMasVotadosActivityView;
 import com.example.administrador.curso4_tarea4_1.bd.ConstructorMascotas;
 import com.example.administrador.curso4_tarea4_1.pojo.Mascota;
 import java.util.ArrayList;
@@ -10,14 +10,14 @@ import java.util.ArrayList;
  * Created by administrador on 27/05/17.
  */
 
-public class Activity2Presenter implements IActivity2Presenter {
+public class MasVotadosActivityPresenter implements IMasVotadosActivityPresenter {
 
-    private IActivity2View iActivity2View;
+    private IMasVotadosActivityView iActivity2View;
     private Context context;
     private ConstructorMascotas constructorMascotas;
     private ArrayList<Mascota> mascotas;
 
-    public Activity2Presenter(IActivity2View iActivity2View, Context context) {
+    public MasVotadosActivityPresenter(IMasVotadosActivityView iActivity2View, Context context) {
         this.iActivity2View = iActivity2View;
         this.context = context;
         obtener5MascotasBaseDatos();

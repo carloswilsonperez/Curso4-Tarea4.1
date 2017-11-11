@@ -8,8 +8,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
 
-import com.example.administrador.curso4_tarea4_1.Activity.Activity2;
-import com.example.administrador.curso4_tarea4_1.Activity.MainActivity;
 import com.example.administrador.curso4_tarea4_1.restApi.adapter.RestApiAdapter;
 import com.example.administrador.curso4_tarea4_1.restApi.model.FollowResponseInstagram;
 import com.google.gson.Gson;

@@ -4,7 +4,7 @@ package com.example.administrador.curso4_tarea4_1.presentador;
  * Created by administrador on 10/11/17.
  */
 
-public interface IActivityVerUsuarioPresenter {
+public interface IVerUsuarioActivityPresenter {
 
     public void obtenerMediosRecientes();
 
