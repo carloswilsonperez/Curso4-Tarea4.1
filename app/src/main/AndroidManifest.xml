@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.MasVotadosActivity"
+            android:name=".vista_activity.MasVotadosActivityView"
             android:parentActivityName=".Activity.MainActivity">
 
             <!-- Soporte para versiones 4.0 o menores -->
@@ -55,6 +55,16 @@
                 android:value="com.example.administrador.curso4_tarea4_1.Activity.MainActivity" />
         </activity>
 
+        <activity
+            android:name=".Activity.VerUsuarioActivity"
+            android:parentActivityName=".Activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.MainActivity"/>
+
+        </activity>
+
+
         <service android:name=".servicios.NotificationIDTokenService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
@@ -74,13 +84,15 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
 
-        <receiver android:name=".restApi.SeguirUsuario">
+        <receiver android:name=".Broadcast.SeguirUsuario">
             <intent-filter>
                 <action android:name="SEGUIR_USUARIO" />
+                <action android:name="VER_MI_PERFIL" />
+                <action android:name="VER_USUARIO" />
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Activity.VerUsuarioActivity"></activity>
+
     </application>
 
 </manifest>

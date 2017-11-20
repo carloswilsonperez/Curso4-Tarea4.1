@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.administrador.curso4_tarea4_1.R;
-import com.example.administrador.curso4_tarea4_1.adapter.PerfilAdaptador;
+import com.example.administrador.curso4_tarea4_1.adapter.PerfilAdapter;
 import com.example.administrador.curso4_tarea4_1.pojo.Mascota;
 import com.example.administrador.curso4_tarea4_1.pojo.Perfil;
 import com.example.administrador.curso4_tarea4_1.presentador.IPerfilFragmentPresenter;
@@ -72,14 +72,14 @@ public class PerfilFragmentView extends Fragment implements IPerfilFragmentView 
         rvPerfiles.setLayoutManager(glm);//Le decimos que el RecyclerView se comporte como un GridLayoutManager
     }
 
-    @Override // Genera el adaptador que va a manejar el RecylerView, en este caso es el PerfilAdaptador y recibie un ArrayList de mascotas
-    public PerfilAdaptador crearAdaptador(ArrayList<Mascota> mascotas) {
-        PerfilAdaptador adaptador = new PerfilAdaptador(mascotas, getActivity());
+    @Override // Genera el adaptador que va a manejar el RecylerView, en este caso es el PerfilAdapter y recibie un ArrayList de mascotas
+    public PerfilAdapter crearAdaptador(ArrayList<Mascota> mascotas) {
+        PerfilAdapter adaptador = new PerfilAdapter(mascotas, getActivity());
         return adaptador;
     }
 
     @Override // Le indicamos al RecyclerView el adaptador que debe usar
-    public void inicializarAdaptadorRV(PerfilAdaptador adaptador) {
+    public void inicializarAdaptadorRV(PerfilAdapter adaptador) {
         rvPerfiles.setAdapter(adaptador);
     }
 

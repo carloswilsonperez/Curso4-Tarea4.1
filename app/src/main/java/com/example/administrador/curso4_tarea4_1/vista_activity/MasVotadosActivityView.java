@@ -1,4 +1,4 @@
-package com.example.administrador.curso4_tarea4_1.Activity;
+package com.example.administrador.curso4_tarea4_1.vista_activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,18 +9,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.administrador.curso4_tarea4_1.R;
-import com.example.administrador.curso4_tarea4_1.adapter.MascotaAdaptador;
+import com.example.administrador.curso4_tarea4_1.adapter.MascotaAdapter;
 import com.example.administrador.curso4_tarea4_1.pojo.Mascota;
 import com.example.administrador.curso4_tarea4_1.presentador.MasVotadosActivityPresenter;
 import com.example.administrador.curso4_tarea4_1.presentador.IMasVotadosActivityPresenter;
 
 import java.util.ArrayList;
 
-public class MasVotadosActivity extends AppCompatActivity implements IMasVotadosActivityView {
+public class MasVotadosActivityView extends AppCompatActivity implements IMasVotadosActivityView {
 
     ArrayList<Mascota> mascotas;
     private RecyclerView rvMascotas;
-    public MascotaAdaptador adaptador;
+    public MascotaAdapter adaptador;
     private IMasVotadosActivityPresenter presentador;
 
     @Override
@@ -66,13 +66,13 @@ public class MasVotadosActivity extends AppCompatActivity implements IMasVotados
     }
 
     @Override
-    public MascotaAdaptador crearAdaptador(ArrayList<Mascota> mascotas) {
-        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, this);
+    public MascotaAdapter crearAdaptador(ArrayList<Mascota> mascotas) {
+        MascotaAdapter adaptador = new MascotaAdapter(mascotas, this);
         return adaptador;
     }
 
     @Override
-    public void inicializarAdaptadorRV(MascotaAdaptador adaptador) {
-        rvMascotas.setAdapter(adaptador);
+    public void inicializarAdaptadorRV(MascotaAdapter adapter) {
+        rvMascotas.setAdapter(adapter);
     }
 }

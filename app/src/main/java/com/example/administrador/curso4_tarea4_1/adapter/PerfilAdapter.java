@@ -31,31 +31,31 @@ import retrofit2.Response;
  * Created by administrador on 18/05/17.
  */
 
-public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.PerfilViewHolder> {
+public class PerfilAdapter extends RecyclerView.Adapter<PerfilAdapter.PerfilViewHolder> {
 
     ArrayList<Mascota> mascotas;
     Activity activity;
     DatosPreferencias datosPreferencias;
-    private static final String TAG = "PerfilAdaptador";
+    private static final String TAG = "PerfilAdapter";
 
 
     //******** Constructor *******
-    public PerfilAdaptador (ArrayList<Mascota> mascotas, Activity activity){
+    public PerfilAdapter(ArrayList<Mascota> mascotas, Activity activity){
         this.mascotas = mascotas;
         this.activity = activity;
     }
 
     // Método que va a inflar el layout y lo pasara al ViewHolder para que obtenga los views
     @Override
-    public PerfilAdaptador.PerfilViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public PerfilAdapter.PerfilViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_perfil, parent, false);
-        return new PerfilAdaptador.PerfilViewHolder(v);
+        return new PerfilAdapter.PerfilViewHolder(v);
     }
 
 
     // Se setean los datos de la clase MascotaViewHolder con los datos de la lista recibida
     @Override
-    public void onBindViewHolder(final PerfilAdaptador.PerfilViewHolder mascotaViewHolder, int position){
+    public void onBindViewHolder(final PerfilAdapter.PerfilViewHolder mascotaViewHolder, int position){
         final Mascota mascota = mascotas.get(position); //Obtiene todos los datos de la mascota en la posición position
         String ruta = mascota.getUrlFoto();
         final String idFotoInstagram = mascota.getIdFoto();
@@ -90,7 +90,7 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
         }
     }
 
-    //**********  Clase interna MascotaViewHolder *****************
+    //**********  Clase interna PerfilViewHolder *****************
     public static class PerfilViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView imgFoto;
@@ -125,10 +125,9 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
                     Log.d(TAG, "registrarDispositivoYUsuario: ID_FIREBASE ->"+ usuarioResponse.getId());
                     Log.d(TAG, "registrarDispositivoYUsuario: TOKEN FIREBASE ->"+ usuarioResponse.getToken());
                 }else {
-                    Log.d(TAG, "Error en el método \"registrarDispositivoYUsuario\" de la clase PerfilAdaptador " +
+                    Log.d(TAG, "Error en el método \"registrarDispositivoYUsuario\" de la clase PerfilAdapter " +
                             ", No hubo respuesta del servidor");
                 }
-
             }
             @Override
             public void onFailure(Call<UsuarioResponse> call, Throwable t) {

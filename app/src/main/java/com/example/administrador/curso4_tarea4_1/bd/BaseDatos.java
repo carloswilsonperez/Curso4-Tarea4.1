@@ -19,7 +19,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 
 
     Context context;
-    private static final String TAG = "Depurador";
+    private static final String TAG = "BaseDatos";
 
     // Constructor
     public BaseDatos(Context context) {
@@ -56,12 +56,10 @@ public class BaseDatos extends SQLiteOpenHelper {
 
     // método para obtener todos las mascotas, que devuelve un ArrayList de tipo Mascota
     public ArrayList<Mascota> obtenerTodasLasMascotas(){
-
         ArrayList<Mascota> mascotas = new ArrayList<Mascota>(); // Instacia el ArrayList para devolver
         String query = "SELECT * FROM " + ConstantesDB.TABLE_MASCOTA; // Consulta sql
         SQLiteDatabase db = this.getWritableDatabase(); // Abre la base de datos en modo escritura
         Cursor registros = db.rawQuery(query, null); //Obtiene todas los filas y las guarda en objeto de tipo cursor registros
-
         while (registros.moveToNext()){
             Mascota mascotaActual = new Mascota();
             mascotaActual.setId(registros.getString(0));
@@ -69,7 +67,6 @@ public class BaseDatos extends SQLiteOpenHelper {
             mascotaActual.setUrlFoto(registros.getString(2));
             mascotaActual.setColorFondo(registros.getInt(3));
             mascotaActual.setLikes(registros.getInt(4));
-
             mascotas.add(mascotaActual);
         }
         db.close(); // Cierra la conexión a la BD
@@ -100,11 +97,9 @@ public class BaseDatos extends SQLiteOpenHelper {
                 " WHERE " + ConstantesDB.TABLE_MASCOTA_ID +"="+mascota.getId();
         SQLiteDatabase db = this.getWritableDatabase(); //abro la conexión
         Cursor registros = db.rawQuery(query, null); // ejecuta la consulta y obtengo los regitros
-
         if (registros.moveToNext()){
             likes = registros.getInt(0); //Como tengo un valor solo obtengo la columna con index 0
-            Log.d(TAG, "El valor de likes en 'ObtenerLikesMascota' es : "+ likes);
-        }
+            Log.d(TAG, "El valor de likes en 'ObtenerLikesMascota' es : "+ likes);        }
 
         db.close(); // Cierra la conexión
         return likes;
@@ -112,20 +107,13 @@ public class BaseDatos extends SQLiteOpenHelper {
 
     // método para obtener las 5 mascotas con mas likes, que devuelve un ArrayList con las 5 mascotas
     public ArrayList<Mascota> obtener5Mascotas(){
-
         ArrayList<Mascota> mascotas = new ArrayList<Mascota>(); // Instacia el ArrayList para devolver
-     //   String query = "SELECT * FROM mascota";
-
         String query = "SELECT * FROM "+ConstantesDB.TABLE_MASCOTA+
                         " ORDER BY "+ConstantesDB.TABLE_MASCOTA_LIKES+
                         " DESC LIMIT 5";
         SQLiteDatabase db = this.getWritableDatabase(); // Abre la base de datos en modo escritura
         Cursor registros = db.rawQuery(query, null); //Obtiene todas los filas y las guarda en objeto de tipo cursor registros
-
-        String foto= registros.getString(2);
-
-
-
+//        String foto= registros.getString(2);
         while (registros.moveToNext()){
             Mascota mascotaActual = new Mascota();
             mascotaActual.setId(registros.getString(0));
@@ -133,9 +121,7 @@ public class BaseDatos extends SQLiteOpenHelper {
             mascotaActual.setUrlFoto(registros.getString(2));
             mascotaActual.setColorFondo(registros.getInt(3));
             mascotaActual.setLikes(registros.getInt(4));
-
             mascotas.add(mascotaActual);
-
             Log.d("NOMBRE-> "+registros.getString(1), "REGISTROS_BD");
             Log.d("FOTO-> "+registros.getString(2), "REGISTROS_BD");
             Log.d("COLOR_FONDO-> "+registros.getString(3), "REGISTROS_BD");

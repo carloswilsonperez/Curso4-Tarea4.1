@@ -24,7 +24,7 @@ import static java.lang.Integer.parseInt;
  * Created by administrador on 08/05/17.
  */
 
-public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.MascotaViewHolder> {
+public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaViewHolder> {
 
     private static final String TAG = "depurador";
     ArrayList<Mascota> mascotas;
@@ -33,7 +33,7 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
 
 
     // Constructor
-    public MascotaAdaptador(ArrayList<Mascota> mascotas, Activity activity){
+    public MascotaAdapter(ArrayList<Mascota> mascotas, Activity activity){
         this.mascotas = mascotas;
         this.activity = activity;
     }
