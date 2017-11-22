@@ -52,7 +52,7 @@ public class PerfilFragmentView extends Fragment implements IPerfilFragmentView 
 
     // Cargo las mascotas a mostrar
     public void inicializarListaMascotas(){
-        mascotas = new ArrayList<Mascota>();
+     //   mascotas = new ArrayList<Mascota>();
 
      /*   mascotas.add(new Mascota("Yaman", 2, getResources().getString(R.drawable.perro01), R.color.fondo_perro01));
         mascotas.add(new Mascota("Yaman", 5, R.drawable.perro01, R.color.fondo_perro01));

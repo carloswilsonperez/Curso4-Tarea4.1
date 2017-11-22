@@ -55,18 +55,18 @@ public class PerfilAdapter extends RecyclerView.Adapter<PerfilAdapter.PerfilView
 
     // Se setean los datos de la clase MascotaViewHolder con los datos de la lista recibida
     @Override
-    public void onBindViewHolder(final PerfilAdapter.PerfilViewHolder mascotaViewHolder, int position){
+    public void onBindViewHolder(final PerfilAdapter.PerfilViewHolder viewHolder, int position){
         final Mascota mascota = mascotas.get(position); //Obtiene todos los datos de la mascota en la posición position
         String ruta = mascota.getUrlFoto();
         final String idFotoInstagram = mascota.getIdFoto();
         ruta = ruta.replaceAll("\"", ""); //Quito las comillas dobles que vienen con la url desde el json
-        Picasso.with(activity) // Libreria para traer las fotos
+        Picasso.with(activity) // Libreria para traer las mascotas
                 .load(ruta) // trae la foto del usuarioApi
-                .into(mascotaViewHolder.imgFoto); // ImagenView dode se va a mostrar la foto
-        mascotaViewHolder.tvNumLikes.setText(Integer.toString(mascota.getLikes()));// Seteo el Número de likes del cardView
-        mascotaViewHolder.llCardViewPerfil.setBackgroundResource(mascota.getColorFondo()); // Establece el color de fondo
+                .into(viewHolder.imgFoto); // ImagenView dode se va a mostrar la foto
+        viewHolder.tvNumLikes.setText(Integer.toString(mascota.getLikes()));// Seteo el Número de likes del cardView
+        viewHolder.llCardViewPerfil.setBackgroundResource(mascota.getColorFondo()); // Establece el color de fondo
 
-        mascotaViewHolder.imgFoto.setOnClickListener(new View.OnClickListener() {
+        viewHolder.imgFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {   //Codigo que se ejecuta al harcer click sobre la foto
                 datosPreferencias = new DatosPreferencias(activity);

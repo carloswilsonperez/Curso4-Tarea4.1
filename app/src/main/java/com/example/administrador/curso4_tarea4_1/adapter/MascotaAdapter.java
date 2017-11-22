@@ -26,7 +26,7 @@ import static java.lang.Integer.parseInt;
 
 public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaViewHolder> {
 
-    private static final String TAG = "depurador";
+    private static final String TAG = "MascotaAdapter";
     ArrayList<Mascota> mascotas;
     Activity activity;
     int likes;
@@ -48,23 +48,23 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
 
     // Se setean los datos de la clase MascotaViewHolder con los datos de la lista recibida
     @Override
-    public void onBindViewHolder(final MascotaViewHolder mascotaViewHolder, int position){
+    public void onBindViewHolder(final MascotaViewHolder viewHolder, int position){
         final Mascota mascota = mascotas.get(position); //Obtiene todos los datos de la mascota en la posición position
         String ruta = mascota.getUrlFoto();
         ruta = ruta.replaceAll("\"", ""); //Quito las comillas dobles que vienen con la url desde el json
 
         Log.i(TAG, "La ruta la url es:"+ ruta);
-        mascotaViewHolder.imgFoto.setImageResource(parseInt(ruta));
-        mascotaViewHolder.tvNumLikes.setText(Integer.toString(mascota.getLikes()));// Seteo el Número de likes del cardView
-        mascotaViewHolder.tvNombre.setText(mascota.getNombre()); // Seteo el cardView con la foto recibida del ArrayList
-        mascotaViewHolder.llCardView.setBackgroundResource(mascota.getColorFondo()); // Establece el color de fondo
+        viewHolder.imgFoto.setImageResource(parseInt(ruta));
+        viewHolder.tvNumLikes.setText(Integer.toString(mascota.getLikes()));// Seteo el Número de likes del cardView
+        viewHolder.tvNombre.setText(mascota.getNombre()); // Seteo el cardView con la foto recibida del ArrayList
+        viewHolder.llCardView.setBackgroundResource(mascota.getColorFondo()); // Establece el color de fondo
 
-        mascotaViewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
+        viewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
                 constructorMascotas.darLikeMascota(mascota); // llama al metodo
-                mascotaViewHolder.tvNumLikes.setText(Integer.toString(constructorMascotas.obtenerLikesMascota(mascota)));
+                viewHolder.tvNumLikes.setText(Integer.toString(constructorMascotas.obtenerLikesMascota(mascota)));
                 Toast.makeText(activity, "Has dado like en " + mascota.getNombre(), Toast.LENGTH_SHORT).show();
             }
         });

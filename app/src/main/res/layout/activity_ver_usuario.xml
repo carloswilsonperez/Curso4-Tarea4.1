@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Medios recientes de supermascota5" />
-<!--
+
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rvMediaUsuario"
                     android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                     android:layout_marginTop="32dp"
                     android:scrollbars="vertical"
                     tools:ignore="ObsoleteLayoutParam" />
--->
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

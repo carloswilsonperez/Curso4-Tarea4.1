@@ -37,7 +37,7 @@ public class SeguirUsuario extends BroadcastReceiver {
     public String idUsuarioInstagram;
     public String usuarioInstagram = "Juan";
     public String tokenInstagram = ConstantesRestApi.ACCESS_TOKEN;
-    public String accion = "5557461888";
+    public String accion;
     public Context miContexto;
 
     @Override

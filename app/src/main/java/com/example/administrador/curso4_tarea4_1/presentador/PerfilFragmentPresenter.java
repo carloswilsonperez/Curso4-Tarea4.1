@@ -47,12 +47,12 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
 
     @Override
     public void obtenerMediosRecientes() {
+        String id = datosPreferencias.getIdUsuarioApi();
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Gson gsonMediaRecent = restApiAdapter.construyeGsonDeserializadorMediaRecent(); //primero el adaptador construye el Gson y luego lo recibe el metodo establecerConexionRestApiInstagram
         // Creo un objeto EndpointsApi utilizando la instancia del RestApiAdapter y el metodo establecerConexionRestApiInstagram()
         // el cual devuelve un objeto de tipo EndpointsApi ya con la url-base cargada y esperando una petición a ejecutar
         EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonMediaRecent);
-        String id = datosPreferencias.getIdUsuarioApi();
         String token = ConstantesRestApi.ACCESS_TOKEN;
         Call<MascotaResponse> mascotaResponseCall = endpointsApi.getRecentMedia(id, token);  // El metodo getRecentMedia realiza la petición y lo guarda en el objeto Call de la clase Retrofit
         mascotaResponseCall.enqueue(new Callback<MascotaResponse>() { //Metodo para controlar el resultado de la respuesta, si trae datos o no
