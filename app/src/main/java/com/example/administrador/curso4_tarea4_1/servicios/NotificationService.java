@@ -65,17 +65,17 @@ public class NotificationService extends FirebaseMessagingService {
         // Objetos Accion para ser utilizada desde el objeto WearableExtender
         // Abrirá la pantalla de home del usuario establecido
         NotificationCompat.Action actionVerMiPerfil =
-                new NotificationCompat.Action.Builder(R.drawable.ic_full_notificacion_perro,
+                new NotificationCompat.Action.Builder(R.drawable.icon_notificacion1,
                         getString(R.string.texto_accion_ver_mi_perfil), pendingIntentVerMiPerfil)
                         .build();
         //Seguir/dejarDeSeguir al usuario que raiteo tu foto de instagram
         NotificationCompat.Action actionSeguirUsuario =
-                new NotificationCompat.Action.Builder(R.drawable.ic_full_notificacion_perro,
+                new NotificationCompat.Action.Builder(R.drawable.icon_notificacion1,
                         getString(R.string.texto_accion_follow_unfollow), pendingIntentSeguirUsuario)
                         .build();
 
         NotificationCompat.Action actionVerUsuario =
-                new NotificationCompat.Action.Builder(R.drawable.ic_full_notificacion_perro,
+                new NotificationCompat.Action.Builder(R.drawable.icon_notificacion1,
                         getString(R.string.texto_accion_ver_usuario), pendingIntentVerUsuario)
                         .build();
 
@@ -84,13 +84,13 @@ public class NotificationService extends FirebaseMessagingService {
                 new NotificationCompat.WearableExtender()
                 .setHintHideIcon(true)
                 .setBackground(BitmapFactory.decodeResource(getResources(),
-                        R.drawable.fondo_perro))
+                        R.drawable.icon_notificacion1))
                 .setGravity(Gravity.CENTER_VERTICAL)
                 ;
 
         // ******* Crea la notificacion *********
         NotificationCompat.Builder notificacion = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_shortcut_perro08)
+                .setSmallIcon(R.drawable.icon_notificacion1)
                 .setContentTitle("Notificación")
                 .setContentText(remoteMessage.getNotification().getBody())
                 .setSound(sonido)
@@ -103,6 +103,7 @@ public class NotificationService extends FirebaseMessagingService {
      //           .addAction(R.drawable.ic_full_notificacion_perro, getString(R.string.texto_accion_ver_mi_perfil), pendingIntentVerMiPerfil)
      //           .addAction(R.drawable.ic_full_notificacion_perro, getString(R.string.texto_accion_follow_unfollow), pendingIntentSeguirUsuario)
      //           .addAction(R.drawable.ic_full_notificacion_perro, getString(R.string.texto_accion_ver_usuario), pendingIntentVerUsuario)
+                .setAutoCancel(true)
                 ;
 
 

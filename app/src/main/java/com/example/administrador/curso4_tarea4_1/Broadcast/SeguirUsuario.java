@@ -35,7 +35,7 @@ public class SeguirUsuario extends BroadcastReceiver {
     String usuarioObjetivoPrivado;
     private static final String TAG = "SeguirUsuario";
     public String idUsuarioInstagram;
-    public String usuarioInstagram = "Juan";
+    public String usuarioInstagram;
     public String tokenInstagram = ConstantesRestApi.ACCESS_TOKEN;
     public String accion;
     public Context miContexto;
@@ -46,9 +46,11 @@ public class SeguirUsuario extends BroadcastReceiver {
         String KEY_ACTION_VER_USUARIO = "VER_USUARIO"; // Abre el activity VerUsuario
         String KEY_ACTION_VER_MI_PERFIL = "VER_MI_PERFIL"; //Abre el fragment Home del MainActivity
         String accionIntent = intent.getAction();
+        datosPreferencias = new DatosPreferencias(context);
         miContexto = context;
-//        idUsuarioInstagram = datosPreferencias.getIdUsuarioApi();
-//        usuarioInstagram = datosPreferencias.getUsuarioApi();
+        idUsuarioInstagram = datosPreferencias.getIdUsuarioApi();
+        usuarioInstagram = datosPreferencias.getUsuarioApi();
+        final String usuarioDelToken = "5557323253";
 
         //****** Seguir o dejar de seguir a un usuario en instagram *****************
         if (KEY_ACTION_FOLLOW.equals(accionIntent)){  // Chequea el codigo de la acción recibida
@@ -57,26 +59,34 @@ public class SeguirUsuario extends BroadcastReceiver {
             mhandler.postDelayed(new Runnable() { // Espera 1 segundo para recibir el estado y actuar en función
                 @Override
                 public void run() {
-                    if (estadoSaliente.equalsIgnoreCase("follows")){ //Si se lo está siguiendo, se lo deja de seguir
+                    //Si se lo está siguiendo y el usuario es válido
+                    if (estadoSaliente.equalsIgnoreCase("follows") && !idUsuarioInstagram.equals(usuarioDelToken)){
                         accion = "unfollow";
                         followUnfollow(idUsuarioInstagram, tokenInstagram, accion);//Se deja de seguir al usuario de instagram
                         Toast toast1 = Toast.makeText( miContexto ,"Se ha dejado de seguir al usuario " + usuarioInstagram,
                                 Toast.LENGTH_LONG);
                         toast1.setGravity(Gravity.CENTER|Gravity.LEFT,0,0);
                         toast1.show();
-                    }
-                    else if (estadoSaliente.equalsIgnoreCase("none")){//Si no lo está siguiendo
+                    }//Si no lo está siguiendo y el usuario es válido
+                    else if (estadoSaliente.equalsIgnoreCase("none") && !idUsuarioInstagram.equals(usuarioDelToken)){
                         accion = "follow";
                         followUnfollow(idUsuarioInstagram, tokenInstagram, accion);//Comienza a seguir al usuario de instagram
                         Toast toast2 = Toast.makeText( miContexto ,"Se ha comensado a seguir al usuario " + usuarioInstagram,
                                 Toast.LENGTH_LONG);
                         toast2.setGravity(Gravity.CENTER|Gravity.LEFT,0,0);
                         toast2.show();
-                    }else {
-                        Toast toast3 = Toast.makeText( miContexto ,"Huvo un error al intentar seguir al usuario " + usuarioInstagram,
+                    }
+                    else if (idUsuarioInstagram.equals(usuarioDelToken)){
+                        Toast toast3 = Toast.makeText( miContexto ,"El token pertenece a " + usuarioInstagram +".\nNo puedes seguirte a ti mismo!",
                                 Toast.LENGTH_LONG);
                         toast3.setGravity(Gravity.CENTER|Gravity.LEFT,0,0);
                         toast3.show();
+                    }
+                    else {
+                        Toast toast4 = Toast.makeText( miContexto ,"Huvo un error al intentar seguir al usuario " + usuarioInstagram,
+                                Toast.LENGTH_LONG);
+                        toast4.setGravity(Gravity.CENTER|Gravity.LEFT,0,0);
+                        toast4.show();
                     }
                 }
             },1800);
@@ -99,7 +109,8 @@ public class SeguirUsuario extends BroadcastReceiver {
     }
 
 
-    //*** Método para chequear si se está seguiendo a un usuario de instagram  ****
+    //*** Método para chequear si se está seguiendo a un usuario de instagram o no.
+    // Con esta información se determina el tipo de acción a tomar ****/
     private String checkStatusFollow (String idUsuarioInstagram, String tokenInstagram){
      //   public String estadoSaliente;
         RestApiAdapter restApiAdapter = new RestApiAdapter(); // Instancia un objeto restApiAdapter
