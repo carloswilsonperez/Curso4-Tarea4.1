@@ -31,14 +31,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:background="@color/color_fondo_06">
 
                 <TextView
                     android:id="@+id/tvTituloVerUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Medios recientes de supermascota5" />
+                    android:layout_marginBottom="0dp"
+                    android:text="Medios recientes de supermascota5"
+                    android:textSize="@dimen/titulo_ver_usuario"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"
+                    />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rvMediaUsuario"
@@ -48,7 +55,7 @@
                     android:layout_marginBottom="0dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="16dp"
                     android:scrollbars="vertical"
                     tools:ignore="ObsoleteLayoutParam" />
 

@@ -7,4 +7,5 @@
     <dimen name="width_hueso">38dp</dimen>
     <dimen name="height_hueso">38dp</dimen>
     <dimen name="titulo_config_cuenta">28sp</dimen>
+    <dimen name="titulo_ver_usuario">24sp</dimen>
 </resources>

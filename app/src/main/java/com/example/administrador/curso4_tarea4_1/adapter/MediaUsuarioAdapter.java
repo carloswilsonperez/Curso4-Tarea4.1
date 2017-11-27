@@ -51,7 +51,7 @@ public class MediaUsuarioAdapter extends RecyclerView.Adapter<MediaUsuarioAdapte
                 load(ruta).
                 into(viewHolder.imgFotoMedia);
         Log.d(TAG, "La ruta la url es:" + ruta);
-        viewHolder.textoMedia.setText("Foto");
+        viewHolder.textoMedia.setText("Foto " + (position+1));
     }
 
     @Override

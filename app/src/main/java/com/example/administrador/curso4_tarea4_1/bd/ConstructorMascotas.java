@@ -40,63 +40,63 @@ public class ConstructorMascotas {
         ContentValues contentValues = new ContentValues();
         contentValues.put(ConstantesDB.TABLE_MASCOTA_NOMBRE, "Pulgarcito");
         contentValues.put(ConstantesDB.TABLE_MASCOTA_FOTO, R.drawable.perro00);
-        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.fondo_perro00);
+        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.color_fondo_00);
         contentValues.put(ConstantesDB.TABLE_MASCOTA_LIKES, 0);
         db.insertarMascota(contentValues); // Mascota 1
 
         contentValues = new ContentValues();
         contentValues.put(ConstantesDB.TABLE_MASCOTA_NOMBRE, "Yaman");
         contentValues.put(ConstantesDB.TABLE_MASCOTA_FOTO, R.drawable.perro01);
-        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.fondo_perro01);
+        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.color_fondo_01);
         contentValues.put(ConstantesDB.TABLE_MASCOTA_LIKES, 0);
         db.insertarMascota(contentValues); // Mascota 2
 
         contentValues = new ContentValues();
         contentValues.put(ConstantesDB.TABLE_MASCOTA_NOMBRE, "Toby");
         contentValues.put(ConstantesDB.TABLE_MASCOTA_FOTO, R.drawable.perro02);
-        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.fondo_perro02);
+        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.color_fondo_02);
         contentValues.put(ConstantesDB.TABLE_MASCOTA_LIKES, 0);
         db.insertarMascota(contentValues); // Mascota 3
 
         contentValues = new ContentValues();
         contentValues.put(ConstantesDB.TABLE_MASCOTA_NOMBRE, "Peñarol");
         contentValues.put(ConstantesDB.TABLE_MASCOTA_FOTO, R.drawable.perro03);
-        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.fondo_perro03);
+        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.color_fondo_03);
         contentValues.put(ConstantesDB.TABLE_MASCOTA_LIKES, 0);
         db.insertarMascota(contentValues); // Mascota 4
 
         contentValues = new ContentValues();
         contentValues.put(ConstantesDB.TABLE_MASCOTA_NOMBRE, "Fausto");
         contentValues.put(ConstantesDB.TABLE_MASCOTA_FOTO, R.drawable.perro04);
-        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.fondo_perro04);
+        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.color_fondo_04);
         contentValues.put(ConstantesDB.TABLE_MASCOTA_LIKES, 0);
         db.insertarMascota(contentValues); // Mascota 5
 
         contentValues = new ContentValues();
         contentValues.put(ConstantesDB.TABLE_MASCOTA_NOMBRE, "Rafa");
         contentValues.put(ConstantesDB.TABLE_MASCOTA_FOTO, R.drawable.perro05);
-        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.fondo_perro05);
+        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.color_fondo_05);
         contentValues.put(ConstantesDB.TABLE_MASCOTA_LIKES, 0);
         db.insertarMascota(contentValues); // Mascota 6
 
         contentValues = new ContentValues();
         contentValues.put(ConstantesDB.TABLE_MASCOTA_NOMBRE, "Duke");
         contentValues.put(ConstantesDB.TABLE_MASCOTA_FOTO, R.drawable.perro06);
-        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.fondo_perro06);
+        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.color_fondo_06);
         contentValues.put(ConstantesDB.TABLE_MASCOTA_LIKES, 0);
         db.insertarMascota(contentValues); // Mascota 7
 
         contentValues = new ContentValues();
         contentValues.put(ConstantesDB.TABLE_MASCOTA_NOMBRE, "Spayck");
         contentValues.put(ConstantesDB.TABLE_MASCOTA_FOTO, R.drawable.perro07);
-        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.fondo_perro07);
+        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.color_fondo_07);
         contentValues.put(ConstantesDB.TABLE_MASCOTA_LIKES, 0);
         db.insertarMascota(contentValues); // Mascota 8
 
         contentValues = new ContentValues();
         contentValues.put(ConstantesDB.TABLE_MASCOTA_NOMBRE, "Paco");
         contentValues.put(ConstantesDB.TABLE_MASCOTA_FOTO, R.drawable.perro08);
-        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.fondo_perro08);
+        contentValues.put(ConstantesDB.TABLE_MASCOTA_COLOR_FONDO, R.color.color_fondo_08);
         contentValues.put(ConstantesDB.TABLE_MASCOTA_LIKES, 0);
         db.insertarMascota(contentValues); // Mascota 9
     }

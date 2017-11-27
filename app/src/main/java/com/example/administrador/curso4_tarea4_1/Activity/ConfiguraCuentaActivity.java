@@ -75,8 +75,6 @@ public class ConfiguraCuentaActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(ConfiguraCuentaActivity.this, "No hay ningún nombre para guardar", Toast.LENGTH_LONG).show();
                 }
-
-
             }
         });
 

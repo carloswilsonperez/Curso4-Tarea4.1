@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.example.administrador.curso4_tarea4_1.R;
 import com.example.administrador.curso4_tarea4_1.adapter.MediaUsuarioAdapter;
@@ -31,6 +32,8 @@ public class VerUsuarioActivity extends AppCompatActivity {
     MediaUsuarioAdapter mediaUsuarioAdapter;
     DatosPreferencias datosPreferencias;
     String idUsuarioInstagram;
+    String usuarioInstagram;
+    TextView tvTituloVerUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,10 @@ public class VerUsuarioActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false); // Oculta el titulo del ToolBar
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);   // Activia boton para atras
         }
+        /* Texto del titulo */
+        usuarioInstagram = datosPreferencias.getUsuarioApi();
+        tvTituloVerUsuario = (TextView)findViewById(R.id.tvTituloVerUsuario);
+        tvTituloVerUsuario.setText("Fotos recientes de: \n" + usuarioInstagram);
         /* Inicia el ReciclerView*/
         rvMediaUsuario = (RecyclerView)findViewById(R.id.rvMediaUsuario);
         LinearLayoutManager linearLayoutManager =
