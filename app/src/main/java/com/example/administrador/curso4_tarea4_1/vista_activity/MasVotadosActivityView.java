@@ -1,4 +1,4 @@
-package com.example.administrador.curso4_tarea4_1.Activity;
+package com.example.administrador.curso4_tarea4_1.vista_activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,24 +9,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.administrador.curso4_tarea4_1.R;
-import com.example.administrador.curso4_tarea4_1.adapter.MascotaAdaptador;
+import com.example.administrador.curso4_tarea4_1.adapter.MascotaAdapter;
 import com.example.administrador.curso4_tarea4_1.pojo.Mascota;
-import com.example.administrador.curso4_tarea4_1.presentador.Activity2Presenter;
-import com.example.administrador.curso4_tarea4_1.presentador.IActivity2Presenter;
+import com.example.administrador.curso4_tarea4_1.presentador.MasVotadosActivityPresenter;
+import com.example.administrador.curso4_tarea4_1.presentador.IMasVotadosActivityPresenter;
 
 import java.util.ArrayList;
 
-public class Activity2 extends AppCompatActivity implements IActivity2View {
+public class MasVotadosActivityView extends AppCompatActivity implements IMasVotadosActivityView {
 
     ArrayList<Mascota> mascotas;
     private RecyclerView rvMascotas;
-    public MascotaAdaptador adaptador;
-    private IActivity2Presenter presentador;
+    public MascotaAdapter adaptador;
+    private IMasVotadosActivityPresenter presentador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_2);
+        setContentView(R.layout.activity_mas_votados);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.miToolBar);
         setSupportActionBar(toolbar);
@@ -35,7 +35,7 @@ public class Activity2 extends AppCompatActivity implements IActivity2View {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         rvMascotas = (RecyclerView) findViewById(R.id.rvMascotas);
-        presentador = new Activity2Presenter(this, getApplicationContext());
+        presentador = new MasVotadosActivityPresenter(this, getApplicationContext());
     }
 
     @Override
@@ -66,13 +66,13 @@ public class Activity2 extends AppCompatActivity implements IActivity2View {
     }
 
     @Override
-    public MascotaAdaptador crearAdaptador(ArrayList<Mascota> mascotas) {
-        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, this);
+    public MascotaAdapter crearAdaptador(ArrayList<Mascota> mascotas) {
+        MascotaAdapter adaptador = new MascotaAdapter(mascotas, this);
         return adaptador;
     }
 
     @Override
-    public void inicializarAdaptadorRV(MascotaAdaptador adaptador) {
-        rvMascotas.setAdapter(adaptador);
+    public void inicializarAdaptadorRV(MascotaAdapter adapter) {
+        rvMascotas.setAdapter(adapter);
     }
 }

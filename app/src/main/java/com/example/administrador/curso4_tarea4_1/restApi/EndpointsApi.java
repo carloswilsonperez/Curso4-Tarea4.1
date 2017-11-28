@@ -70,5 +70,12 @@ public interface EndpointsApi {
     @POST(ConstantesRestApi.KEY_FOLLOW_UNFOLLOW)
     Call<FollowResponseInstagram> seguirUsuarioInstagram(@Path("user-id") String idUsuarioInstagram,
                                                          @Field("access_token") String tokenInstagram,
-                                                         @Field("acction") String accion );
+                                                         @Field("action") String accion );
+
+    /* GET para consultar si se está siguiendo a un usuario de instagram
+        https://api.instagram.com/v1/users/{user-id}/relationship?access_token=ACCESS-TOKEN  */
+    @GET(ConstantesRestApi.KEY_QUERY_FOLLOW_)
+    Call<FollowResponseInstagram> querySeguirUsuarioInstagram(@Path("user-id") String idUsuarioInstagram,
+                                                              @Query("access_token") String tokenInstagram);
+
 }

@@ -4,14 +4,14 @@
     <color name="colorPrimaryDark">#3cb0b7</color>
     <color name="colorAccent">#EF5344</color>
     <color name="colorBlanco">#ffffff</color>
-    <color name="navigationBarColor">#4c3d41</color>
-    <color name="fondo_perro00">#7FB348</color>
-    <color name="fondo_perro01">#0F7BC4</color>
-    <color name="fondo_perro02">#FE6FA4</color>
-    <color name="fondo_perro03">#66E5A6</color>
-    <color name="fondo_perro04">#9F4B64</color>
-    <color name="fondo_perro05">#F3C493</color>
-    <color name="fondo_perro06">#aeb8e1</color>
-    <color name="fondo_perro07">#fc4671</color>
-    <color name="fondo_perro08">#d0f591</color>
+    <color name="color_navigation_bar">#4c3d41</color>
+    <color name="color_fondo_00">#7FB348</color>
+    <color name="color_fondo_01">#0F7BC4</color>
+    <color name="color_fondo_02">#FE6FA4</color>
+    <color name="color_fondo_03">#66E5A6</color>
+    <color name="color_fondo_04">#9F4B64</color>
+    <color name="color_fondo_05">#F3C493</color>
+    <color name="color_fondo_06">#aeb8e1</color>
+    <color name="color_fondo_07">#fc4671</color>
+    <color name="color_fondo_08">#d0f591</color>
 </resources>

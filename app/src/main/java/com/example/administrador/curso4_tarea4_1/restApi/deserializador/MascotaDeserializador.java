@@ -33,8 +33,6 @@ public class MascotaDeserializador implements JsonDeserializer<MascotaResponse>{
         return mascotaResponse; // Devuelve un objteto con de tipo response con la respuesta
     }
 
-
-
     public ArrayList<Mascota> deserealizarMascotaDeJson(JsonArray mascotaResponseData){
 
         ArrayList<Mascota> mascotas = new ArrayList<>();
@@ -60,7 +58,6 @@ public class MascotaDeserializador implements JsonDeserializer<MascotaResponse>{
             mascotaActual.setUrlFoto(urlFoto);
             mascotaActual.setLikes(likes);
             mascotaActual.setIdFoto(idFoto);
-
             mascotas.add(mascotaActual); //Guardo al usuarioApi actual en el array mascotas
         }
 

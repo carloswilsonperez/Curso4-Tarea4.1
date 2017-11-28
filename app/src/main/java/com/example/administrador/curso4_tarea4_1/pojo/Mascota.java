@@ -13,7 +13,6 @@ public class Mascota {
     private int colorFondo;
     private String idFoto;
 
-
     //Contructor
     public Mascota (String nombre, int Likes, String urlFoto, int colorFondo, String idFoto){
         this.nombre = nombre;

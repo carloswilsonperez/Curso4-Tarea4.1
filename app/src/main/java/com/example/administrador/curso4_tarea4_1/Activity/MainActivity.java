@@ -21,6 +21,7 @@ import com.example.administrador.curso4_tarea4_1.restApi.DatosPreferencias;
 import com.example.administrador.curso4_tarea4_1.restApi.EndpointsApi;
 import com.example.administrador.curso4_tarea4_1.restApi.adapter.RestApiAdapter;
 import com.example.administrador.curso4_tarea4_1.restApi.model.UsuarioResponse;
+import com.example.administrador.curso4_tarea4_1.vista_activity.MasVotadosActivityView;
 import com.example.administrador.curso4_tarea4_1.vista_fragment.HomeFragmentView;
 import com.example.administrador.curso4_tarea4_1.vista_fragment.PerfilFragmentView;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -33,6 +34,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    public final static String TAG = "MainActivity";
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -65,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
     }
 
     @Override
@@ -87,9 +88,14 @@ public class MainActivity extends AppCompatActivity {
             if (numTab == 1) {
                 // Abres la página que quieras
                 viewPager.setCurrentItem(1); // 1 para ir a la segunda página ya que empiezan en 0
-                Log.d("ABRIR-TAB", "estas dentro del if para abrir la pestaña 1");
-            }else {
-                Log.d("ABRIR-TAB", "estas FUERA del if ");
+                Log.d(TAG, "ABRIR-TAB: estas dentro del if para abrir la pestaña 1 (Perfil)");
+            }
+            else if (numTab == 2){
+                viewPager.setCurrentItem(0); // 1 para ir a la segunda página ya que empiezan en 0
+                Log.d(TAG, "ABRIR-TAB: estas dentro del else if para abrir la pestaña 0 (Home)");
+            }
+            else {
+                Log.d(TAG, "estas FUERA del if ");
             }
         }
     }
@@ -118,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent3);
                 break;
             case R.id.mRecibirNotificaciones:
-                String token = FirebaseInstanceId.getInstance().getToken(); //captura el token
-                Log.d("FIREBASE-TOKEN", token);
+                String token = FirebaseInstanceId.getInstance().getToken(); //captura el tokenInstagram
+                Log.d(TAG,"El token obtenido es: "+ token);
                 enviarTokenRegistro(token); //lo envia para su registro
                 break;
         }
@@ -127,9 +133,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // Abre el activity2 con las 5 mascotas favoritas
+    // Abre el MasVotadosActivityView con las 5 mascotas favoritas
     public void irFavoritas(View view){
-        Intent intent = new Intent(this, Activity2.class);
+        Intent intent = new Intent(this, MasVotadosActivityView.class);
         startActivity(intent);
     }
 
@@ -148,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
         // por último se llama a la funcion agregarFragments que devuelve el ArrayList con los fragments.
         viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), agregarFragments()));
         tabLayout.setupWithViewPager(viewPager);
-
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_perro);
     }
@@ -160,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         // Obtengo el id del usuario de instagram que está guardado en mi dispositivo
         datosPreferencias = new DatosPreferencias(this);
         idUsuario = datosPreferencias.getIdUsuarioApi();
-        //por último se utiliza el metodo que registra el token
+        //por último se utiliza el metodo que registra el tokenInstagram
         Call<UsuarioResponse> usuarioResponseCall = endpoints.registrarUsuario(token, idUsuario);
         // verificamos si salió bien
         usuarioResponseCall.enqueue(new Callback<UsuarioResponse>() {
@@ -169,16 +174,14 @@ public class MainActivity extends AppCompatActivity {
                 //Como la clase "UsuarioResponse" es identica a la respuesta no es necesario crear un deserializador
                 UsuarioResponse usuarioResponse = response.body(); //obtiene la respuesta
                 //aqui podemos guardar los datos localmente
-                Log.d("ID_FIREBASE", "Este es el ID ->"+ usuarioResponse.getId());
-                Log.d("TOKEN_FIREBASE", "Este es el TOKEN ->"+ usuarioResponse.getToken());
+                Log.d(TAG, "ID_FIREBASE, Este es el ID ->"+ usuarioResponse.getId());
+                Log.d(TAG, "TOKEN_FIREBASE, Este es el TOKEN ->"+ usuarioResponse.getToken());
             }
 
             @Override
             public void onFailure(Call<UsuarioResponse> call, Throwable t) {
-                Log.d("ERROR_CONEXION_FIREBASE", "Huvo un error de conexión!");
+                Log.d(TAG, "ERROR_CONEXION_FIREBASE, Huvo un error de conexión!");
             }
         });
     }
-
-
 }

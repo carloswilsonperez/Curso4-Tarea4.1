@@ -26,7 +26,7 @@ public class PerfilDeserializador implements JsonDeserializer<PerfilResponse>{
         Gson gson = new Gson();
         PerfilResponse perfilResponse = gson.fromJson(json, PerfilResponse.class);//
         JsonArray perfilResponseData = json.getAsJsonObject().getAsJsonArray(JsonKeys.DATA_RESPONCE_ARRAY);//Obtiene el array data del json
-        perfilResponse.setPerfil(deserealizarPerfilDeJson(perfilResponseData));//llama al metodo contiguo para deserializar
+        perfilResponse.setPerfil(deserealizarPerfilDeJson(perfilResponseData));//Llama al metodo contiguo para deserializar
         return perfilResponse; // Devuelve un objeteto de tipo PerfilResponse con la respuesta
     }
 

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by administrador on 17/05/17.
  */
-
+// Clase para manjera los Fragments en el MainActivity
 public class PageAdapter extends FragmentPagerAdapter {
 
     private ArrayList<Fragment> fragments;

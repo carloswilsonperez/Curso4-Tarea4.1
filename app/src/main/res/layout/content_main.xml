@@ -10,7 +10,6 @@
     tools:context=".Activity.MainActivity"
     tools:showIn="@layout/activity_main">
 
-
     <!-- Contenedor donde viven los fragments -->
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"

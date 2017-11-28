@@ -31,41 +31,41 @@ import retrofit2.Response;
  * Created by administrador on 18/05/17.
  */
 
-public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.PerfilViewHolder> {
+public class PerfilAdapter extends RecyclerView.Adapter<PerfilAdapter.PerfilViewHolder> {
 
     ArrayList<Mascota> mascotas;
     Activity activity;
     DatosPreferencias datosPreferencias;
+    private static final String TAG = "PerfilAdapter";
 
 
     //******** Constructor *******
-    public PerfilAdaptador (ArrayList<Mascota> mascotas, Activity activity){
+    public PerfilAdapter(ArrayList<Mascota> mascotas, Activity activity){
         this.mascotas = mascotas;
         this.activity = activity;
     }
 
     // Método que va a inflar el layout y lo pasara al ViewHolder para que obtenga los views
     @Override
-    public PerfilAdaptador.PerfilViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public PerfilAdapter.PerfilViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_perfil, parent, false);
-        return new PerfilAdaptador.PerfilViewHolder(v);
+        return new PerfilAdapter.PerfilViewHolder(v);
     }
 
 
     // Se setean los datos de la clase MascotaViewHolder con los datos de la lista recibida
     @Override
-    public void onBindViewHolder(final PerfilAdaptador.PerfilViewHolder mascotaViewHolder, int position){
-        final Mascota mascota = mascotas.get(position); //Obtiene todos los datos de la mascota en la posición position
+    public void onBindViewHolder( PerfilAdapter.PerfilViewHolder viewHolder, int position){
+        Mascota mascota = mascotas.get(position); //Obtiene todos los datos de la mascota en la posición position
         String ruta = mascota.getUrlFoto();
         final String idFotoInstagram = mascota.getIdFoto();
         ruta = ruta.replaceAll("\"", ""); //Quito las comillas dobles que vienen con la url desde el json
-        Picasso.with(activity) // Libreria para traer las fotos
+        Picasso.with(activity) // Libreria para traer las mascotas
                 .load(ruta) // trae la foto del usuarioApi
-                .into(mascotaViewHolder.imgFoto); // ImagenView dode se va a mostrar la foto
-        mascotaViewHolder.tvNumLikes.setText(Integer.toString(mascota.getLikes()));// Seteo el Número de likes del cardView
-        mascotaViewHolder.llCardViewPerfil.setBackgroundResource(mascota.getColorFondo()); // Establece el color de fondo
-
-        mascotaViewHolder.imgFoto.setOnClickListener(new View.OnClickListener() {
+                .into(viewHolder.imgFoto); // ImagenView dode se va a mostrar la foto
+        viewHolder.tvNumLikes.setText(Integer.toString(mascota.getLikes()));// Seteo el Número de likes del cardView
+        viewHolder.llCardViewPerfil.setBackgroundResource(mascota.getColorFondo()); // Establece el color de fondo
+        viewHolder.imgFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {   //Codigo que se ejecuta al harcer click sobre la foto
                 datosPreferencias = new DatosPreferencias(activity);
@@ -89,7 +89,7 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
         }
     }
 
-    //**********  Clase interna MascotaViewHolder *****************
+    //**********  Clase interna PerfilViewHolder *****************
     public static class PerfilViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView imgFoto;
@@ -107,7 +107,7 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
         }
     }
 
-    // Metodo para guardar el token y el id de usuario instagram en la base de datos Firebase por intermedio de Heroku
+    // Metodo para guardar el token y el id de usuario de instagram en la base de datos Firebase por intermedio de Heroku
     private void registrarDispositivoYUsuario(String idDispositivo, String idUsuarioInstagram){
         RestApiAdapter restApiAdapter = new RestApiAdapter(); //instancio el adaptador
         EndpointsApi endpoints = restApiAdapter.establecerConexionHeroku(); //Conecta con el servidor de Heroku
@@ -121,17 +121,16 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
                 UsuarioResponse usuarioResponse = response.body(); //obtiene la respuesta
                 //aqui podemos guardar los datos localmente
                 if (usuarioResponse!=null){
-                    Log.d("ID_FIREBASE", "Este es el ID ->"+ usuarioResponse.getId());
-                    Log.d("TOKEN_FIREBASE", "Este es el TOKEN ->"+ usuarioResponse.getToken());
+                    Log.d(TAG, "registrarDispositivoYUsuario: ID_FIREBASE ->"+ usuarioResponse.getId());
+                    Log.d(TAG, "registrarDispositivoYUsuario: TOKEN FIREBASE ->"+ usuarioResponse.getToken());
                 }else {
-                    Log.d("ID_FIREBASE", "Error en el método \"registrarDispositivoYUsuario\" de la clase PerfilAdaptador " +
+                    Log.d(TAG, "Error en el método \"registrarDispositivoYUsuario\" de la clase PerfilAdapter " +
                             ", No hubo respuesta del servidor");
                 }
-
             }
             @Override
             public void onFailure(Call<UsuarioResponse> call, Throwable t) {
-                Log.d("ERROR_CONEXION_FIREBASE", "Huvo un error de conexión!");
+                Log.d(TAG, "Huvo un error de conexión con FIREBASE!");
             }
         });
     }
@@ -148,11 +147,11 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
             public void onResponse(Call<LikeResponseInstagram> call, Response<LikeResponseInstagram> response) {
                 Toast.makeText(activity, "Has enviado un like a la foto", Toast.LENGTH_LONG).show();
                // String idDispositivo = FirebaseInstanceId.getInstance().getToken(); //captura el token del dispositivo
-                Log.d("LikeOk", "El like ha sido enviado a instagram");
+                Log.d(TAG, "LIKE OK. El like ha sido enviado a instagram");
             }
             @Override
             public void onFailure(Call<LikeResponseInstagram> call, Throwable t) {
-                Log.d("LikeError", "Algo salió mal al dar like en la foto");
+                Log.d(TAG, "LIKE ERROR. Algo salió mal al dar like en la foto");
             }
         });
     }
@@ -168,14 +167,14 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
             public void onResponse(Call<LikeResponseHeroku> call, Response<LikeResponseHeroku> response) {
                 LikeResponseHeroku likeResponseHeroku = response.body();
                 if (likeResponseHeroku!=null){
-                    String regitrolike = likeResponseHeroku.getId_dispositivo();
+                    String registroLike = likeResponseHeroku.getId_dispositivo();
                 }
-                Log.d("RegistraLikeOk", "El like se ha guardado en Firebase utilizando Heroku");
+                Log.d(TAG, "El like se ha guardado en Firebase utilizando HEROKU");
             }
 
             @Override
             public void onFailure(Call<LikeResponseHeroku> call, Throwable t) {
-                Log.d("RegistraLikeError", "Hubo un error al guardar el like en Firebase utilizando Heroku");
+                Log.d(TAG, "Hubo un error al guardar el like en FIREBASE utilizando HEROKU");
             }
         });
     }
@@ -191,13 +190,13 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
                 NotificaLikeResponse notificaLikeResponse = response.body();
                 if (notificaLikeResponse!=null){
                     String id_dispositivo = notificaLikeResponse.getId_dispositivo();
-                    Log.d("NotificaLikeOk", "Se han envíado las notificaciones a: " + id_dispositivo);
+                    Log.d(TAG, "NOTIFICACIÓN LIKE OK, Se han envíado las notificaciones a: " + id_dispositivo);
                 }
             }
 
             @Override
             public void onFailure(Call<NotificaLikeResponse> call, Throwable t) {
-                Log.d("NotificaLikeError", "Hubo un error al intentar enviar las notificaciones");
+                Log.d(TAG, "NOTIFICACIÓN ERROR, Hubo un error al intentar enviar las notificaciones");
             }
         });
 
