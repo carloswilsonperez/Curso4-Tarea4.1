@@ -31,6 +31,7 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
     private ArrayList<Mascota> mascotas;
     private ArrayList<Perfil> perfiles;
     DatosPreferencias datosPreferencias;
+    private String idPerfilInstagram;
 
     //El contructor recibe un instacia del la Iterface de la vista y el contexto
     public PerfilFragmentPresenter(IPerfilFragmentView iPerfilFragmentView, Context context) {
@@ -89,6 +90,7 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
             public void onResponse(Call<PerfilResponse> call, Response<PerfilResponse> response) {
                 PerfilResponse perfilResponse = response.body(); //obtiene solo la data del objeto json recibido
                 perfiles = perfilResponse.getPerfil();// guarda el ArrayList con el perfil
+                idPerfilInstagram = perfiles.get(0).getIdUsuario();
                 mostrarPerfil();
             }
             @Override // Si la conexión falla:
@@ -107,12 +109,12 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
         EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonPerfil);
         String nombreUsuario = usuario;
         Call<PerfilResponse> perfilResponseCall = endpointsApi.getPerfil(nombreUsuario, ConstantesRestApi.ACCESS_TOKEN);  // El metodo getRecentMedia realiza la petición y lo guarda en el objeto Call de la clase Retrofit
-
         perfilResponseCall.enqueue(new Callback<PerfilResponse>() { //Metodo para controlar el resultado de la respuesta, si trae datos o no
             @Override // Si la conexión es exitosa:
             public void onResponse(Call<PerfilResponse> call, Response<PerfilResponse> response) {
                 PerfilResponse perfilResponse = response.body(); //obtiene solo la data del objeto json recibido
                 perfiles = perfilResponse.getPerfil();// guarda el ArrayList con el perfil
+                idPerfilInstagram = perfiles.get(0).getIdUsuario();
                 enviarIdPerfil();
             }
             @Override // Si la conexión falla:
@@ -124,13 +126,15 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
     }
 
     @Override
+    public void enviarIdPerfil() {
+        ConfiguraCuentaActivity configuraCuentaActivity = new ConfiguraCuentaActivity();
+        configuraCuentaActivity.recibeIdPerfil(idPerfilInstagram);
+    }
+
+    @Override
     public void mostrarPerfil() {
         iPerfilFragmentView.mostrarPerfil(perfiles);
     }
 
-    @Override
-    public void enviarIdPerfil() {
-        ConfiguraCuentaActivity configuraCuentaActivity = new ConfiguraCuentaActivity();
-        configuraCuentaActivity.recibeIdPerfil(perfiles);
-    }
+
 }

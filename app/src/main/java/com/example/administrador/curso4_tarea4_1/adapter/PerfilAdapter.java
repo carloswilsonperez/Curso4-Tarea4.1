@@ -55,8 +55,8 @@ public class PerfilAdapter extends RecyclerView.Adapter<PerfilAdapter.PerfilView
 
     // Se setean los datos de la clase MascotaViewHolder con los datos de la lista recibida
     @Override
-    public void onBindViewHolder(final PerfilAdapter.PerfilViewHolder viewHolder, int position){
-        final Mascota mascota = mascotas.get(position); //Obtiene todos los datos de la mascota en la posición position
+    public void onBindViewHolder( PerfilAdapter.PerfilViewHolder viewHolder, int position){
+        Mascota mascota = mascotas.get(position); //Obtiene todos los datos de la mascota en la posición position
         String ruta = mascota.getUrlFoto();
         final String idFotoInstagram = mascota.getIdFoto();
         ruta = ruta.replaceAll("\"", ""); //Quito las comillas dobles que vienen con la url desde el json
@@ -65,7 +65,6 @@ public class PerfilAdapter extends RecyclerView.Adapter<PerfilAdapter.PerfilView
                 .into(viewHolder.imgFoto); // ImagenView dode se va a mostrar la foto
         viewHolder.tvNumLikes.setText(Integer.toString(mascota.getLikes()));// Seteo el Número de likes del cardView
         viewHolder.llCardViewPerfil.setBackgroundResource(mascota.getColorFondo()); // Establece el color de fondo
-
         viewHolder.imgFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {   //Codigo que se ejecuta al harcer click sobre la foto
@@ -108,7 +107,7 @@ public class PerfilAdapter extends RecyclerView.Adapter<PerfilAdapter.PerfilView
         }
     }
 
-    // Metodo para guardar el token y el id de usuario instagram en la base de datos Firebase por intermedio de Heroku
+    // Metodo para guardar el token y el id de usuario de instagram en la base de datos Firebase por intermedio de Heroku
     private void registrarDispositivoYUsuario(String idDispositivo, String idUsuarioInstagram){
         RestApiAdapter restApiAdapter = new RestApiAdapter(); //instancio el adaptador
         EndpointsApi endpoints = restApiAdapter.establecerConexionHeroku(); //Conecta con el servidor de Heroku

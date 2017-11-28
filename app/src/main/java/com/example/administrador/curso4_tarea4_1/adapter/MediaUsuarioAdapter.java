@@ -43,9 +43,9 @@ public class MediaUsuarioAdapter extends RecyclerView.Adapter<MediaUsuarioAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        final Mascota mascota = mascotas.get(position); //Obtiene todos los datos de la mascota en la posición position
+        Mascota mascota = mascotas.get(position); //Obtiene todos los datos de la mascota en la posición position
         String ruta = mascota.getUrlFoto();
-        final String idFotoInstagram = mascota.getIdFoto();
+        String idFotoInstagram = mascota.getIdFoto();
         ruta = ruta.replaceAll("\"", ""); //Quito las comillas dobles que vienen con la url desde el json
         Picasso.with(activity).
                 load(ruta).

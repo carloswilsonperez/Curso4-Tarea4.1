@@ -25,7 +25,7 @@
     <string name="aviso_enviando_mail">Tu comentario está siendo procesado.</string>
     <string name="aviso_mail_enviado">Correo enviado con éxito a:  </string>
     <string name="aviso_faltan_datos">Faltan datos </string>
-    <string name="mi_mascota">Yaman</string>
+    <string name="mi_mascota">Usuario Instagram</string>
     <string name="et_usuario_sandbox">Escribe un usuario</string>
     <string name="btn_guardar_cuenta">Guardar Cuenta</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>

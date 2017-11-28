@@ -9,8 +9,8 @@ import android.content.SharedPreferences;
 
 public class DatosPreferencias {
 
-    private String usuarioApi;
-    private String idUsuarioApi;
+    private static String usuarioApi;
+    private static String idUsuarioApi;
     private Context context;
     SharedPreferences miPreferencia;
 
@@ -37,9 +37,11 @@ public class DatosPreferencias {
     }
 
     public void setIdUsuarioApi(String idUsuarioApi) {
+
         this.idUsuarioApi = idUsuarioApi;
         SharedPreferences.Editor editor = miPreferencia.edit();
         editor.putString(ConstantesRestApi.key_ID_USUARIO_API, idUsuarioApi);
         editor.commit();
     }
+
 }

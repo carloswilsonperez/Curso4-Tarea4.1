@@ -52,13 +52,11 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
         final Mascota mascota = mascotas.get(position); //Obtiene todos los datos de la mascota en la posición position
         String ruta = mascota.getUrlFoto();
         ruta = ruta.replaceAll("\"", ""); //Quito las comillas dobles que vienen con la url desde el json
-
         Log.i(TAG, "La ruta la url es:"+ ruta);
         viewHolder.imgFoto.setImageResource(parseInt(ruta));
         viewHolder.tvNumLikes.setText(Integer.toString(mascota.getLikes()));// Seteo el Número de likes del cardView
         viewHolder.tvNombre.setText(mascota.getNombre()); // Seteo el cardView con la foto recibida del ArrayList
         viewHolder.llCardView.setBackgroundResource(mascota.getColorFondo()); // Establece el color de fondo
-
         viewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

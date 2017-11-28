@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.example.administrador.curso4_tarea4_1.R;
 import com.example.administrador.curso4_tarea4_1.adapter.PerfilAdapter;
 import com.example.administrador.curso4_tarea4_1.pojo.Mascota;
@@ -19,7 +18,6 @@ import com.example.administrador.curso4_tarea4_1.presentador.IPerfilFragmentPres
 import com.example.administrador.curso4_tarea4_1.presentador.PerfilFragmentPresenter;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
 /**
